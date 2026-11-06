@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kito - AI Chief of Staff</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Kito <span>✦</span></h1>
+    <p>No noise. Just work.</p>
+  </header>
+
+  <nav>
+    <button onclick="showTab('brief')" id="btn-brief" class="active">AI Brief</button>
+    <button onclick="showTab('memory')" id="btn-memory">Decision Memory</button>
+  </nav>
+
+  <!-- BRIEF TAB -->
+  <div id="tab-brief">
+    <div class="card summary">
+      <b>3 decisions need you.</b> 12 handled. 0 meetings.
+    </div>
+    <div id="brief-list"></div>
+  </div>
+
+  <!-- MEMORY TAB -->
+  <div id="tab-memory" style="display:none">
+    <input id="search" placeholder="Search any past decision... e.g. budget" oninput="renderMemory()">
+    <div id="memory-list"></div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
