@@ -1,0 +1,14 @@
+body { font-family: sans-serif; background: #f7f7f7; margin: 0; padding: 16px; }
+.app { max-width: 600px; margin: auto; background: white; border-radius: 16px; padding: 20px; }
+header h1 { margin: 0; font-size: 32px; }
+header h1 span { color: #00b96f; }
+nav { display: flex; gap: 8px; margin: 20px 0; }
+nav button { flex: 1; padding: 12px; border-radius: 10px; border: 1px solid #ddd; background: white; font-weight: bold; }
+nav button.active { background: #00b96f; color: white; }
+.card { border: 1px solid #eee; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+.summary { background: #e8f8f0; }
+.card button { padding: 8px 14px; border-radius: 8px; border: none; margin-right: 6px; margin-top: 10px; cursor: pointer; }
+.approve { background: #00b96f; color: white; }
+.dismiss { background: #eee; }
+small { color: #777; }
+input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 12px; box-sizing: border-box; }
