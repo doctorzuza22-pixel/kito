@@ -1,37 +1,84 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kito - AI Chief of Staff</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101713">
+  <title>KITO — Your work, in control</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="app">
-  <header>
-    <h1>Kito <span>✦</span></h1>
-    <p>No noise. Just work.</p>
-  </header>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="KITO home"><span class="brand-mark">✦</span><span>KITO</span></a>
+      <span class="local-status"><i></i> Private workspace</span>
+    </header>
 
-  <nav>
-    <button onclick="showTab('brief')" id="btn-brief" class="active">AI Brief</button>
-    <button onclick="showTab('memory')" id="btn-memory">Decision Memory</button>
-  </nav>
+    <section class="welcome">
+      <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
+      <h1>Good work starts<br>with <span>clarity.</span></h1>
+      <p class="welcome-copy">Your priorities, decisions and notes — all in one calm place.</p>
+    </section>
 
-  <!-- BRIEF TAB -->
-  <div id="tab-brief">
-    <div class="card summary">
-      <b>3 decisions need you.</b> 12 handled. 0 meetings.
-    </div>
-    <div id="brief-list"></div>
-  </div>
+    <section class="stats" aria-label="Workspace overview">
+      <article class="stat-card"><span class="stat-label">OPEN TASKS</span><strong id="task-count">0</strong><span class="stat-foot">Things to move forward</span></article>
+      <article class="stat-card"><span class="stat-label">DECISIONS</span><strong id="decision-count">0</strong><span class="stat-foot">Saved for later</span></article>
+      <article class="stat-card"><span class="stat-label">NOTES</span><strong id="note-count">0</strong><span class="stat-foot">Ideas captured</span></article>
+    </section>
 
-  <!-- MEMORY TAB -->
-  <div id="tab-memory" style="display:none">
-    <input id="search" placeholder="Search any past decision... e.g. budget" oninput="renderMemory()">
-    <div id="memory-list"></div>
-  </div>
-</div>
-<script src="app.js"></script>
+    <nav class="tabs" aria-label="Main navigation">
+      <button class="tab active" data-tab="brief">Overview</button>
+      <button class="tab" data-tab="tasks">Tasks</button>
+      <button class="tab" data-tab="memory">Decisions</button>
+      <button class="tab" data-tab="notes">Notes</button>
+    </nav>
+
+    <section class="panel active" id="panel-brief">
+      <div class="section-heading"><div><p class="eyebrow">YOUR DAY</p><h2>At a glance</h2></div><span class="date-chip" id="today-date"></span></div>
+      <div class="focus-card">
+        <div class="focus-icon">✦</div><div><strong>Keep the important things moving.</strong><p>KITO keeps your work organised. Add a task, record a decision or capture a thought below.</p></div>
+      </div>
+      <div class="section-heading compact"><h3>Next actions</h3><button class="text-button" data-go="tasks">View all</button></div>
+      <div id="brief-tasks" class="item-list"><p class="empty-state">No tasks yet. Add your first one in Tasks.</p></div>
+      <div class="section-heading compact"><h3>Recent decisions</h3><button class="text-button" data-go="memory">View all</button></div>
+      <div id="brief-decisions" class="item-list"><p class="empty-state">Your saved decisions will appear here.</p></div>
+    </section>
+
+    <section class="panel" id="panel-tasks">
+      <div class="section-heading"><div><p class="eyebrow">STAY ON TRACK</p><h2>Your tasks</h2></div></div>
+      <form id="task-form" class="entry-form">
+        <label for="task-input">What needs to get done?</label>
+        <div class="input-row"><input id="task-input" maxlength="120" placeholder="Add a task..." required><button class="primary-button" type="submit">Add task <span>＋</span></button></div>
+      </form>
+      <div class="filter-row"><span class="muted" id="task-summary">Your active list</span><button class="text-button" id="clear-completed" type="button">Clear completed</button></div>
+      <div id="task-list" class="item-list"></div>
+    </section>
+
+    <section class="panel" id="panel-memory">
+      <div class="section-heading"><div><p class="eyebrow">THE REASON BEHIND THE WORK</p><h2>Decision memory</h2></div></div>
+      <p class="panel-intro">Keep a record of what was decided, why it was chosen and what alternatives were considered.</p>
+      <form id="decision-form" class="entry-form stacked">
+        <label for="decision-input">What was decided?</label><input id="decision-input" maxlength="160" placeholder="e.g. Use the new supplier" required>
+        <label for="reason-input">Why?</label><textarea id="reason-input" rows="3" maxlength="500" placeholder="The reason behind the decision..."></textarea>
+        <label for="alternative-input">Alternative considered <span class="optional">optional</span></label><input id="alternative-input" maxlength="250" placeholder="What was not chosen?">
+        <button class="primary-button full-button" type="submit">Save decision <span>↗</span></button>
+      </form>
+      <input class="search-input" id="memory-search" type="search" placeholder="Search saved decisions...">
+      <div id="memory-list" class="item-list"></div>
+    </section>
+
+    <section class="panel" id="panel-notes">
+      <div class="section-heading"><div><p class="eyebrow">CAPTURE THE THOUGHT</p><h2>Your notes</h2></div></div>
+      <form id="note-form" class="entry-form stacked">
+        <label for="note-title">Note title</label><input id="note-title" maxlength="100" placeholder="Give this note a name..." required>
+        <label for="note-body">Your note</label><textarea id="note-body" rows="5" maxlength="3000" placeholder="Write anything you want to remember..."></textarea>
+        <button class="primary-button full-button" type="submit">Save note <span>↗</span></button>
+      </form>
+      <div id="note-list" class="item-list"></div>
+    </section>
+
+    <footer><span class="footer-brand">KITO <b>✦</b></span><span>Your space. Your decisions. Your pace.</span><p>V1 · Your information stays on this device.</p></footer>
+  </main>
+  <script src="app.js"></script>
 </body>
 </html>
