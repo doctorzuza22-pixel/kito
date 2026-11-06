@@ -21,6 +21,14 @@ jobs:
         with:
           gradle-version: '8.6'
 
+      - name: Copy web files into APK assets
+        run: |
+          mkdir -p app/src/main/assets
+          cp index.html app/src/main/assets/index.html
+          cp style.css app/src/main/assets/style.css
+          cp app.js app/src/main/assets/app.js
+          ls -l app/src/main/assets/
+
       - name: Build APK
         run: gradle assembleDebug --stacktrace
 
