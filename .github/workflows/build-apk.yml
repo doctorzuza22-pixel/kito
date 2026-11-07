@@ -1,4 +1,4 @@
-name: Build KITO Android APK
+name: Build KITO Android APK (branded v1.1)
 
 on:
   push:
