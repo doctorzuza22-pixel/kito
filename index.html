@@ -4,14 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#101713">
-  <title>KITO — Your work, in control</title>
+  <meta name="description" content="KITO — your work, in control.">
+  <title>KITO — Where work gets done</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="shell">
     <header class="topbar">
-      <a class="brand" href="#" aria-label="KITO home"><span class="brand-mark">✦</span><span>KITO</span></a>
-      <span class="local-status"><i></i> Private workspace</span>
+      <a class="brand" href="#" aria-label="KITO home">
+        <svg class="brand-logo" viewBox="0 0 108 108" role="img" aria-label="KITO logo"><rect width="108" height="108" rx="25" fill="#101713"/><path d="M25 22h13v64H25zM40 52 68 22h18L56 54l31 32H69L45 61z" fill="#fff"/><path d="M16 76C34 52 57 31 91 23 67 41 43 61 16 84Z" fill="#20d66b"/></svg>
+        <span>KITO</span>
+      </a>
+      <div class="top-actions"><span class="local-status"><i></i> Private on this device</span><button id="backup-button" class="icon-button" type="button" aria-label="Back up workspace" title="Back up workspace">↥</button><button id="restore-button" class="icon-button" type="button" aria-label="Restore workspace" title="Restore workspace">↧</button><input id="restore-file" type="file" accept="application/json,.json" hidden></div>
     </header>
 
     <section class="welcome">
@@ -35,22 +39,25 @@
 
     <section class="panel active" id="panel-brief">
       <div class="section-heading"><div><p class="eyebrow">YOUR DAY</p><h2>At a glance</h2></div><span class="date-chip" id="today-date"></span></div>
-      <div class="focus-card">
-        <div class="focus-icon">✦</div><div><strong>Keep the important things moving.</strong><p>KITO keeps your work organised. Add a task, record a decision or capture a thought below.</p></div>
-      </div>
+      <div class="focus-card"><div class="focus-icon">✦</div><div><strong>Keep the important things moving.</strong><p>KITO keeps your work organised. Add a task, record a decision or capture a thought below.</p></div></div>
       <div class="section-heading compact"><h3>Next actions</h3><button class="text-button" data-go="tasks">View all</button></div>
       <div id="brief-tasks" class="item-list"><p class="empty-state">No tasks yet. Add your first one in Tasks.</p></div>
       <div class="section-heading compact"><h3>Recent decisions</h3><button class="text-button" data-go="memory">View all</button></div>
       <div id="brief-decisions" class="item-list"><p class="empty-state">Your saved decisions will appear here.</p></div>
+      <div class="section-heading compact"><h3>Workspace backup</h3></div>
+      <div class="backup-card"><div><strong>Your data stays yours.</strong><p>Save a copy of your tasks, decisions and notes, or restore it on this device later.</p></div><button class="primary-button" id="backup-button-main" type="button">Back up data ↥</button></div>
     </section>
 
     <section class="panel" id="panel-tasks">
       <div class="section-heading"><div><p class="eyebrow">STAY ON TRACK</p><h2>Your tasks</h2></div></div>
       <form id="task-form" class="entry-form">
         <label for="task-input">What needs to get done?</label>
-        <div class="input-row"><input id="task-input" maxlength="120" placeholder="Add a task..." required><button class="primary-button" type="submit">Add task <span>＋</span></button></div>
+        <input id="task-input" maxlength="120" placeholder="Add a task..." required>
+        <div class="task-options"><div><label for="task-priority">Priority</label><select id="task-priority"><option value="Normal">Normal</option><option value="High">High</option><option value="Low">Low</option></select></div><div><label for="task-due">Due date</label><input id="task-due" type="date"></div></div>
+        <button class="primary-button full-button" type="submit">Add task <span>＋</span></button>
       </form>
       <div class="filter-row"><span class="muted" id="task-summary">Your active list</span><button class="text-button" id="clear-completed" type="button">Clear completed</button></div>
+      <input class="search-input" id="task-search" type="search" placeholder="Search your tasks...">
       <div id="task-list" class="item-list"></div>
     </section>
 
@@ -74,10 +81,11 @@
         <label for="note-body">Your note</label><textarea id="note-body" rows="5" maxlength="3000" placeholder="Write anything you want to remember..."></textarea>
         <button class="primary-button full-button" type="submit">Save note <span>↗</span></button>
       </form>
+      <input class="search-input" id="note-search" type="search" placeholder="Search your notes...">
       <div id="note-list" class="item-list"></div>
     </section>
 
-    <footer><span class="footer-brand">KITO <b>✦</b></span><span>Your space. Your decisions. Your pace.</span><p>V1 · Your information stays on this device.</p></footer>
+    <footer><span class="footer-brand"><svg viewBox="0 0 108 108" aria-hidden="true"><path d="M25 22h13v64H25zM40 52 68 22h18L56 54l31 32H69L45 61z" fill="currentColor"/><path d="M16 76C34 52 57 31 91 23 67 41 43 61 16 84Z" fill="#20d66b"/></svg> KITO</span><span>Where work gets done.</span><p>V1.1 · Your information stays on this device.</p></footer>
   </main>
   <script src="app.js"></script>
 </body>
