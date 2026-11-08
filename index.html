@@ -1,92 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#101713">
-  <meta name="description" content="KITO — your work, in control.">
-  <title>KITO — Where work gets done</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101713"><meta name="description" content="KITO business workspace">
+<title>KITO — Business workspace</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="shell">
-    <header class="topbar">
-      <a class="brand" href="#" aria-label="KITO home">
-        <svg class="brand-logo" viewBox="0 0 108 108" role="img" aria-label="KITO logo"><rect width="108" height="108" rx="25" fill="#101713"/><path d="M25 22h13v64H25zM40 52 68 22h18L56 54l31 32H69L45 61z" fill="#fff"/><path d="M16 76C34 52 57 31 91 23 67 41 43 61 16 84Z" fill="#20d66b"/></svg>
-        <span>KITO</span>
-      </a>
-      <div class="top-actions"><span class="local-status"><i></i> Private on this device</span><button id="backup-button" class="icon-button" type="button" aria-label="Back up workspace" title="Back up workspace">↥</button><button id="restore-button" class="icon-button" type="button" aria-label="Restore workspace" title="Restore workspace">↧</button><input id="restore-file" type="file" accept="application/json,.json" hidden></div>
-    </header>
-
-    <section class="welcome">
-      <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
-      <h1>Good work starts<br>with <span>clarity.</span></h1>
-      <p class="welcome-copy">Your priorities, decisions and notes — all in one calm place.</p>
-    </section>
-
-    <section class="stats" aria-label="Workspace overview">
-      <article class="stat-card"><span class="stat-label">OPEN TASKS</span><strong id="task-count">0</strong><span class="stat-foot">Things to move forward</span></article>
-      <article class="stat-card"><span class="stat-label">DECISIONS</span><strong id="decision-count">0</strong><span class="stat-foot">Saved for later</span></article>
-      <article class="stat-card"><span class="stat-label">NOTES</span><strong id="note-count">0</strong><span class="stat-foot">Ideas captured</span></article>
-    </section>
-
-    <nav class="tabs" aria-label="Main navigation">
-      <button class="tab active" data-tab="brief">Overview</button>
-      <button class="tab" data-tab="tasks">Tasks</button>
-      <button class="tab" data-tab="memory">Decisions</button>
-      <button class="tab" data-tab="notes">Notes</button>
-    </nav>
-
-    <section class="panel active" id="panel-brief">
-      <div class="section-heading"><div><p class="eyebrow">YOUR DAY</p><h2>At a glance</h2></div><span class="date-chip" id="today-date"></span></div>
-      <div class="focus-card"><div class="focus-icon">✦</div><div><strong>Keep the important things moving.</strong><p>KITO keeps your work organised. Add a task, record a decision or capture a thought below.</p></div></div>
-      <div class="section-heading compact"><h3>Next actions</h3><button class="text-button" data-go="tasks">View all</button></div>
-      <div id="brief-tasks" class="item-list"><p class="empty-state">No tasks yet. Add your first one in Tasks.</p></div>
-      <div class="section-heading compact"><h3>Recent decisions</h3><button class="text-button" data-go="memory">View all</button></div>
-      <div id="brief-decisions" class="item-list"><p class="empty-state">Your saved decisions will appear here.</p></div>
-      <div class="section-heading compact"><h3>Workspace backup</h3></div>
-      <div class="backup-card"><div><strong>Your data stays yours.</strong><p>Save a copy of your tasks, decisions and notes, or restore it on this device later.</p></div><button class="primary-button" id="backup-button-main" type="button">Back up data ↥</button></div>
-    </section>
-
-    <section class="panel" id="panel-tasks">
-      <div class="section-heading"><div><p class="eyebrow">STAY ON TRACK</p><h2>Your tasks</h2></div></div>
-      <form id="task-form" class="entry-form">
-        <label for="task-input">What needs to get done?</label>
-        <input id="task-input" maxlength="120" placeholder="Add a task..." required>
-        <div class="task-options"><div><label for="task-priority">Priority</label><select id="task-priority"><option value="Normal">Normal</option><option value="High">High</option><option value="Low">Low</option></select></div><div><label for="task-due">Due date</label><input id="task-due" type="date"></div></div>
-        <button class="primary-button full-button" type="submit">Add task <span>＋</span></button>
-      </form>
-      <div class="filter-row"><span class="muted" id="task-summary">Your active list</span><button class="text-button" id="clear-completed" type="button">Clear completed</button></div>
-      <input class="search-input" id="task-search" type="search" placeholder="Search your tasks...">
-      <div id="task-list" class="item-list"></div>
-    </section>
-
-    <section class="panel" id="panel-memory">
-      <div class="section-heading"><div><p class="eyebrow">THE REASON BEHIND THE WORK</p><h2>Decision memory</h2></div></div>
-      <p class="panel-intro">Keep a record of what was decided, why it was chosen and what alternatives were considered.</p>
-      <form id="decision-form" class="entry-form stacked">
-        <label for="decision-input">What was decided?</label><input id="decision-input" maxlength="160" placeholder="e.g. Use the new supplier" required>
-        <label for="reason-input">Why?</label><textarea id="reason-input" rows="3" maxlength="500" placeholder="The reason behind the decision..."></textarea>
-        <label for="alternative-input">Alternative considered <span class="optional">optional</span></label><input id="alternative-input" maxlength="250" placeholder="What was not chosen?">
-        <button class="primary-button full-button" type="submit">Save decision <span>↗</span></button>
-      </form>
-      <input class="search-input" id="memory-search" type="search" placeholder="Search saved decisions...">
-      <div id="memory-list" class="item-list"></div>
-    </section>
-
-    <section class="panel" id="panel-notes">
-      <div class="section-heading"><div><p class="eyebrow">CAPTURE THE THOUGHT</p><h2>Your notes</h2></div></div>
-      <form id="note-form" class="entry-form stacked">
-        <label for="note-title">Note title</label><input id="note-title" maxlength="100" placeholder="Give this note a name..." required>
-        <label for="note-body">Your note</label><textarea id="note-body" rows="5" maxlength="3000" placeholder="Write anything you want to remember..."></textarea>
-        <button class="primary-button full-button" type="submit">Save note <span>↗</span></button>
-      </form>
-      <input class="search-input" id="note-search" type="search" placeholder="Search your notes...">
-      <div id="note-list" class="item-list"></div>
-    </section>
-
-    <footer><span class="footer-brand"><svg viewBox="0 0 108 108" aria-hidden="true"><path d="M25 22h13v64H25zM40 52 68 22h18L56 54l31 32H69L45 61z" fill="currentColor"/><path d="M16 76C34 52 57 31 91 23 67 41 43 61 16 84Z" fill="#20d66b"/></svg> KITO</span><span>Where work gets done.</span><p>V1.1 · Your information stays on this device.</p></footer>
-  </main>
-  <script src="app.js"></script>
-</body>
-</html>
+<main class="shell">
+<header class="topbar">
+<a class="brand" href="#" aria-label="KITO home"><svg class="brand-logo" viewBox="0 0 108 108" role="img" aria-label="KITO logo"><rect width="108" height="108" rx="25" fill="#101713"/><path d="M25 22h13v64H25zM40 52 68 22h18L56 54l31 32H69L45 61z" fill="#fff"/><path d="M16 76C34 52 57 31 91 23 67 41 43 61 16 84Z" fill="#20d66b"/></svg><span>KITO</span></a>
+<div class="top-actions"><span class="local-status"><i></i> Offline workspace</span><button id="backup-button" class="icon-button" title="Back up">↥</button><button id="restore-button" class="icon-button" title="Restore">↧</button><input id="restore-file" type="file" accept="application/json,.json" hidden></div>
+</header>
+<section class="welcome"><p class="eyebrow">YOUR BUSINESS, IN ONE PLACE</p><h1>Run your business<br>with <span>clarity.</span></h1><p class="welcome-copy">Customers, money, stock and daily work — organised in one workspace.</p></section>
+<section class="stats">
+<article class="stat-card"><span class="stat-label">SALES</span><strong id="stat-sales">R0.00</strong><span class="stat-foot">Recorded revenue</span></article>
+<article class="stat-card"><span class="stat-label">EXPENSES</span><strong id="stat-expenses">R0.00</strong><span class="stat-foot">Recorded spending</span></article>
+<article class="stat-card"><span class="stat-label">NET</span><strong id="stat-profit">R0.00</strong><span class="stat-foot">Sales minus expenses</span></article>
+</section>
+<nav class="tabs" aria-label="Business modules">
+<button class="tab active" data-tab="dashboard">Home</button><button class="tab" data-tab="customers">Customers</button><button class="tab" data-tab="sales">Sales</button><button class="tab" data-tab="expenses">Expenses</button><button class="tab" data-tab="stock">Stock</button><button class="tab" data-tab="documents">Invoices</button><button class="tab" data-tab="team">Team</button><button class="tab" data-tab="calendar">Calendar</button><button class="tab" data-tab="work">Work</button><button class="tab" data-tab="reports">Reports</button>
+</nav>
+<section class="panel active" id="panel-dashboard">
+<div class="section-heading"><div><p class="eyebrow">BUSINESS OVERVIEW</p><h2>At a glance</h2></div><span class="date-chip" id="today-date"></span></div>
+<div class="kpi-grid"><article class="kpi"><span>Customers</span><strong id="count-customers">0</strong></article><article class="kpi"><span>Products</span><strong id="count-products">0</strong></article><article class="kpi"><span>Open tasks</span><strong id="count-tasks">0</strong></article><article class="kpi"><span>Unpaid invoices</span><strong id="count-unpaid">0</strong></article></div>
+<div class="section-heading compact"><h3>Needs attention</h3></div><div id="alerts" class="item-list"><p class="empty-state">Your business alerts will appear here.</p></div>
+<div class="section-heading compact"><h3>Recent activity</h3></div><div id="recent-activity" class="item-list"><p class="empty-state">Your latest activity will appear here.</p></div>
+<div class="backup-card"><div><strong>Your workspace belongs to you.</strong><p>Export a backup regularly. This version stores information on this device.</p></div><button class="primary-button" id="backup-button-main">Back up data ↥</button></div>
+</section>
+<section class="panel" id="panel-customers"><div class="section-heading"><div><p class="eyebrow">RELATIONSHIPS</p><h2>Customers</h2></div></div>
+<form id="customer-form" class="entry-form"><label>Name / business *</label><input name="name" maxlength="120" required placeholder="Customer or business name"><div class="form-grid"><div><label>Phone</label><input name="phone" type="tel" placeholder="Phone number"></div><div><label>Email</label><input name="email" type="email" placeholder="Email address"></div></div><label>Notes</label><textarea name="notes" rows="2" placeholder="Address, preferences or follow-up notes"></textarea><button class="primary-button full-button">Add customer ＋</button></form>
+<input id="customer-search" class="search-input" placeholder="Search customers..."><div id="customer-list" class="item-list"></div></section>
+<section class="panel" id="panel-sales"><div class="section-heading"><div><p class="eyebrow">INCOME</p><h2>Record a sale</h2></div></div>
+<form id="sale-form" class="entry-form"><label>Item / service *</label><input name="item" required placeholder="What did you sell?"><label>Customer</label><select name="customer" id="sale-customer"><option value="">Walk-in / not specified</option></select><div class="form-grid"><div><label>Quantity</label><input name="qty" type="number" min="0.01" step="0.01" value="1" required></div><div><label>Unit price (R)</label><input name="price" type="number" min="0" step="0.01" required placeholder="0.00"></div></div><div class="form-grid"><div><label>Date</label><input name="date" type="date" required></div><div><label>Payment</label><select name="payment"><option>Paid</option><option>Unpaid</option><option>Part-paid</option></select></div></div><label>Notes</label><input name="notes" placeholder="Optional details"><button class="primary-button full-button">Save sale ＋</button></form><div class="section-heading compact"><h3>Sales history</h3></div><div id="sales-list" class="item-list"></div></section>
+<section class="panel" id="panel-expenses"><div class="section-heading"><div><p class="eyebrow">OUTGOINGS</p><h2>Expenses</h2></div></div>
+<form id="expense-form" class="entry-form"><label>Description *</label><input name="description" required placeholder="What did the business pay for?"><div class="form-grid"><div><label>Amount (R) *</label><input name="amount" type="number" min="0.01" step="0.01" required></div><div><label>Category</label><select name="category"><option>Stock / supplies</option><option>Transport</option><option>Rent</option><option>Utilities</option><option>Wages</option><option>Marketing</option><option>Equipment</option><option>Other</option></select></div></div><div class="form-grid"><div><label>Date</label><input name="date" type="date" required></div><div><label>Paid to</label><input name="supplier" placeholder="Supplier / recipient"></div></div><button class="primary-button full-button">Save expense ＋</button></form><div id="expenses-list" class="item-list"></div></section>
+<section class="panel" id="panel-stock"><div class="section-heading"><div><p class="eyebrow">INVENTORY</p><h2>Stock & products</h2></div></div>
+<form id="product-form" class="entry-form"><label>Product name *</label><input name="name" required placeholder="Product name"><div class="form-grid"><div><label>SKU / code</label><input name="sku" placeholder="Optional code"></div><div><label>Quantity *</label><input name="qty" type="number" min="0" step="1" required></div></div><div class="form-grid"><div><label>Cost price (R)</label><input name="cost" type="number" min="0" step="0.01" value="0"></div><div><label>Selling price (R)</label><input name="price" type="number" min="0" step="0.01" value="0"></div></div><label>Low-stock alert at</label><input name="reorder" type="number" min="0" step="1" value="3"><button class="primary-button full-button">Add product ＋</button></form><div id="stock-list" class="item-list"></div></section>
+<section class="panel" id="panel-documents"><div class="section-heading"><div><p class="eyebrow">CUSTOMER DOCUMENTS</p><h2>Invoices & quotes</h2></div></div>
+<form id="document-form" class="entry-form"><div class="form-grid"><div><label>Document type</label><select name="type"><option>Invoice</option><option>Quotation</option></select></div><div><label>Reference number</label><input name="number" placeholder="Auto if blank"></div></div><label>Customer *</label><select name="customer" id="document-customer" required><option value="">Choose customer</option></select><label>Description *</label><input name="description" required placeholder="Goods or services supplied"><div class="form-grid"><div><label>Quantity</label><input name="qty" type="number" min="0.01" step="0.01" value="1" required></div><div><label>Unit price (R)</label><input name="price" type="number" min="0" step="0.01" required></div></div><div class="form-grid"><div><label>Due date</label><input name="due" type="date"></div><div><label>Status</label><select name="status"><option>Unpaid</option><option>Paid</option><option>Draft</option></select></div></div><button class="primary-button full-button">Create document ＋</button></form><div id="documents-list" class="item-list"></div><p class="hint">Documents can be opened and printed or saved as PDF using your phone's print menu. Check local tax and invoice requirements before issuing them.</p></section>
+<section class="panel" id="panel-team"><div class="section-heading"><div><p class="eyebrow">PEOPLE</p><h2>Team directory</h2></div></div>
+<form id="team-form" class="entry-form"><label>Team member name *</label><input name="name" required placeholder="Full name"><div class="form-grid"><div><label>Role</label><input name="role" placeholder="e.g. Sales assistant"></div><div><label>Phone</label><input name="phone" type="tel" placeholder="Phone"></div></div><label>Email</label><input name="email" type="email" placeholder="Email"><button class="primary-button full-button">Add team member ＋</button></form><div id="team-list" class="item-list"></div><p class="hint">This is a local team directory, not separate employee login accounts. Secure multi-user access is a later cloud upgrade.</p></section>
+<section class="panel" id="panel-calendar"><div class="section-heading"><div><p class="eyebrow">SCHEDULE</p><h2>Appointments</h2></div></div>
+<form id="appointment-form" class="entry-form"><label>Appointment / reminder *</label><input name="title" required placeholder="What is happening?"><div class="form-grid"><div><label>Date *</label><input name="date" type="date" required></div><div><label>Time</label><input name="time" type="time"></div></div><label>Customer / contact</label><input name="contact" placeholder="Optional"><label>Notes</label><textarea name="notes" rows="2"></textarea><button class="primary-button full-button">Add appointment ＋</button></form><div id="calendar-list" class="item-list"></div></section>
+<section class="panel" id="panel-work"><div class="section-heading"><div><p class="eyebrow">GET THINGS DONE</p><h2>Tasks, notes & decisions</h2></div></div>
+<form id="task-form" class="entry-form"><label>New task *</label><input name="title" required placeholder="What needs doing?"><div class="form-grid"><div><label>Priority</label><select name="priority"><option>Normal</option><option>High</option><option>Low</option></select></div><div><label>Due date</label><input name="due" type="date"></div></div><button class="primary-button full-button">Add task ＋</button></form><div id="tasks-list" class="item-list"></div>
+<form id="decision-form" class="entry-form stacked"><h3>Save a decision</h3><label>What was decided?</label><input name="decision" required placeholder="Decision"><label>Why?</label><textarea name="reason" rows="2"></textarea><label>Alternative considered</label><input name="alternative"><button class="primary-button full-button">Save decision</button></form><div id="decisions-list" class="item-list"></div>
+<form id="note-form" class="entry-form stacked"><h3>Save a note</h3><label>Title</label><input name="title" required placeholder="Note title"><label>Note</label><textarea name="body" rows="3"></textarea><button class="primary-button full-button">Save note</button></form><div id="notes-list" class="item-list"></div></section>
+<section class="panel" id="panel-reports"><div class="section-heading"><div><p class="eyebrow">BUSINESS PERFORMANCE</p><h2>Reports</h2></div></div><div id="report-summary" class="report-grid"></div><div class="section-heading compact"><h3>Stock needing attention</h3></div><div id="report-stock" class="item-list"></div><div class="section-heading compact"><h3>Outstanding documents</h3></div><div id="report-unpaid" class="item-list"></div><button class="primary-button full-button" id="print-report">Print / save report</button></section>
+<footer><span class="footer-brand"><svg viewBox="0 0 108 108" aria-hidden="true"><path d="M25 22h13v64H25zM40 52 68 22h18L56 54l31 32H69L45 61z" fill="currentColor"/><path d="M16 76C34 52 57 31 91 23 67 41 43 61 16 84Z" fill="#20d66b"/></svg> KITO</span><span>Where work gets done.</span><p>Business Workspace · Data saved on this device. Back up regularly.</p></footer>
+</main><script src="app.js"></script></body></html>
