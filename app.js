@@ -13,7 +13,7 @@ function del(type,key){db[type]=db[type].filter(x=>String(x.id)!==String(key));p
 function btnDelete(type,key){return '<button class="small-action danger" onclick="del(\''+type+'\','+Number(key)+')">Delete</button>'}
 function switchTab(tab){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+tab));if(tab==='reports')renderReports()}
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
-$('today-date').textContent=new Date().toLocaleDateString('en-ZA',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
+$('today-date').textContent=new Date().toLocaleDateString('en-ZA',{weekday:'short',day:'numeric',month:'short',year:'numeric'});$('product-form').elements.stockDate.value=today();
 bindForm('customer-form',v=>db.customers.unshift({id:id(),...v,created:today()}));
 bindForm('sale-form',v=>db.sales.unshift({id:id(),...v,qty:Number(v.qty),price:Number(v.price),total:Number(v.qty)*Number(v.price)}));
 bindForm('expense-form',v=>db.expenses.unshift({id:id(),...v,amount:Number(v.amount)}));
