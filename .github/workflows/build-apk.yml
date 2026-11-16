@@ -1,4 +1,4 @@
-name: Build KITO Android APK (branded v1.1)
+name: Build DUMA Android APK (branded v1.1)
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out KITO
+      - name: Check out DUMA
         uses: actions/checkout@v4
 
       - name: Set up Java 17
@@ -37,9 +37,9 @@ jobs:
       - name: Build debug APK
         run: gradle assembleDebug --stacktrace
 
-      - name: Upload KITO APK
+      - name: Upload DUMA APK
         uses: actions/upload-artifact@v4
         with:
-          name: KITO-Android-APK
+          name: DUMA-Android-APK
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
