@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:icon="@drawable/kito_launcher"
+        android:icon="@drawable/duma_logo"
         android:roundIcon="@drawable/kito_launcher"
         android:usesCleartextTraffic="false"
         android:allowBackup="true"
