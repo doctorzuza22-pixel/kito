@@ -32,6 +32,7 @@ jobs:
           cp index.html app/src/main/assets/index.html
           cp style.css app/src/main/assets/style.css
           cp app.js app/src/main/assets/app.js
+          cp duma_logo.jpg app/src/main/assets/duma_logo.jpg
           node --check app/src/main/assets/app.js
 
       - name: Build debug APK
