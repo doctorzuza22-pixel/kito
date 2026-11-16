@@ -8,7 +8,7 @@
 <body>
 <main class="shell">
 <header class="topbar">
-<a class="brand" href="#" aria-label="DUMA home"><svg class="brand-logo" viewBox="0 0 108 108" role="img" aria-label="DUMA logo"><rect width="108" height="108" rx="25" fill="#101713"/><path d="M25 22h13v64H25zM40 52 68 22h18L56 54l31 32H69L45 61z" fill="#fff"/><path d="M16 76C34 52 57 31 91 23 67 41 43 61 16 84Z" fill="#168b5b"/></svg><span>DUMA</span></a>
+<a class="brand" href="#" aria-label="DUMA home"><img class="brand-logo" src="duma_logo.jpg" alt="DUMA logo"><span>DUMA</span></a>
 <div class="top-actions"><span class="local-status"><i></i> Offline workspace</span><button id="backup-button" class="icon-button" title="Back up">↥</button><button id="restore-button" class="icon-button" title="Restore">↧</button><input id="restore-file" type="file" accept="application/json,.json" hidden></div>
 </header>
 <section class="welcome"><p class="eyebrow">YOUR BUSINESS, IN ONE PLACE</p><h1>Run your business<br>with <span>clarity.</span></h1><p class="welcome-copy">Customers, money, stock and daily work — organised in one workspace.</p></section>
@@ -47,5 +47,5 @@
 <form id="decision-form" class="entry-form stacked"><h3>Save a decision</h3><label>What was decided?</label><input name="decision" required placeholder="Decision"><label>Why?</label><textarea name="reason" rows="2"></textarea><label>Alternative considered</label><input name="alternative"><button class="primary-button full-button">Save decision</button></form><div id="decisions-list" class="item-list"></div>
 <form id="note-form" class="entry-form stacked"><h3>Save a note</h3><label>Title</label><input name="title" required placeholder="Note title"><label>Note</label><textarea name="body" rows="3"></textarea><button class="primary-button full-button">Save note</button></form><div id="notes-list" class="item-list"></div></section>
 <section class="panel" id="panel-reports"><div class="section-heading"><div><p class="eyebrow">BUSINESS PERFORMANCE</p><h2>Reports</h2></div></div><div id="report-summary" class="report-grid"></div><div class="section-heading compact"><h3>Stock needing attention</h3></div><div id="report-stock" class="item-list"></div><div class="section-heading compact"><h3>Outstanding documents</h3></div><div id="report-unpaid" class="item-list"></div><button class="primary-button full-button" id="print-report">Print / save report</button></section>
-<footer><span class="footer-brand"><svg viewBox="0 0 108 108" aria-hidden="true"><path d="M25 22h13v64H25zM40 52 68 22h18L56 54l31 32H69L45 61z" fill="currentColor"/><path d="M16 76C34 52 57 31 91 23 67 41 43 61 16 84Z" fill="#168b5b"/></svg> DUMA</span><span>Where work gets done.</span><p>Business Workspace · Data saved on this device. Back up regularly.</p></footer>
+<footer><span class="footer-brand"><img src="duma_logo.jpg" alt="" class="footer-logo"> DUMA</span><span>Where work gets done.</span><p>Business Workspace · Data saved on this device. Back up regularly.</p></footer>
 </main><script src="app.js"></script></body></html>
